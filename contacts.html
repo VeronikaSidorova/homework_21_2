@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bootstrap Layout</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Иконки Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+    }
+    /* Левая колонка */
+    #sidebar {
+      background-color: #222; /* тёмно-серый */
+      width: 250px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+    /* Заголовок "Меню" с картинкой */
+    #menu-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    #menu-header img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    #menu-header span {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    /* Меню вкладок */
+    .nav-link {
+      color: #fff;
+      font-size: 1.2rem; /* большие буквы */
+      margin-top: 20px;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #0d6efd; /* синий при выделении */
+    }
+    /* Нижний блок пользователя - перемещен вниз */
+    #user-menu {
+      margin-top: auto; /* чтобы был снизу в колонке */
+      padding-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    #user-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem; /* размер иконки */
+	  display:flex;
+	  align-items:center;
+	  justify-content:center
+    }
+    #user-btn i {
+      margin-right: 8px;
+    }
+
+    /* Основной контент справа */
+    #main-content {
+      flex-grow:1;
+	  display:flex;
+	  flex-direction:column;
+	  height:auto
+	}
+
+	/* Заголовок по центру всей страницы */
+	#page-header {
+	  text-align:center;
+	  padding-top:20px;
+	  padding-bottom:20px
+	}
+
+	/* Контейнер для двух половин формы и записи с увеличенными внутренними отступами */
+	#content-row {
+	  display:flex;
+	  height:auto;
+	  width:100%;
+	  gap:40px; /* расстояние между половинами увеличено для большего пространства между ними */
+	  padding-left:50px; /* добавляем отступ слева */
+	  padding-right:50px; /* добавляем отступ справа */
+	  padding-top:30px; /* сверху немного больше пространства */
+	  padding-bottom:30px; /* снизу тоже больше пространства */
+	}
+
+	/* Каждая половина занимает ровно половину ширины и имеет внутренние отступы для большего пространства внутри */
+	.half {
+	  flex-basis:50%;
+	  display:flex;
+	  flex-direction:column
+	}
+
+	/* Для формы и текста одинаковая высота (по содержимому) */
+
+</style>
+</head>
+<body>
+
+<!-- Левая колонка -->
+<div id="sidebar" class="d-flex flex-column align-items-center">
+
+  <!-- Заголовок "Меню" с картинкой -->
+  <div id="menu-header">
+    <!-- Можно заменить src на любую другую картинку -->
+    <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.svg" alt="Bootstrap Icon"/>
+    <span>Меню</span>
+  </div>
+
+  <!-- Меню вкладок -->
+  <nav class="nav flex-column mt-4 w-100 px-3">
+    <a class="nav-link active" href="#">Главная</a>
+    <a class="nav-link" href="#">Категории</a>
+    <a class="nav-link" href="#">Заказы</a>
+    <a class="nav-link" href="#">Контакты</a>
+
+<!-- Нижний блок пользовательского меню перемещен вниз -->
+<div id="user-menu" class="w-100 mt-auto">
+  <!-- Кнопка с иконкой и текстом -->
+  <div class="dropdown w-100">
+    <button class="btn btn-secondary w-100 d-flex align-items-center justify-content-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-person-circle"></i> Пользователь
+    </button>
+
+     <!-- Выпадающее меню -->
+     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+       <li><a class="dropdown-item" href="#">Профиль</a></li>
+       <li><hr class="dropdown-divider"></li>
+       <li><a class="dropdown-item" href="#">Выход</a></li>
+     </ul>
+   </div>
+</div>
+
+</nav>
+</div>
+
+<!-- Основной контент справа -->
+<div id="main-content">
+
+<!-- Заголовок страницы -->
+<div id='page-header'>
+<h1>Обратная связь</h1>
+</div>
+
+<!-- Контейнер для двух половин формы и записи с увеличенными внутренними отступами -->
+<div id='content-row'>
+
+<!-- Левая половина - форма -->
+<div class='half'>
+<form action="/" method="POST" >
+  <div class='mb-3'>
+    <label for='name' class='form-label'>Имя</label>
+    <input type='text' class='form-control' id='name' name='name' placeholder='Ваше имя'>
+  </div>
+  <!-- Поле для почты с иконкой @ -->
+  <div class='mb-3'>
+    <label for='email' class='form-label'>Почта</label>
+    <div class='input-group'>
+      <span class='input-group-text' id='basic-addon1'>
+        <i class='bi bi-at'></i>
+      </span>
+      <input type='email' class='form-control' id='email' name='email' placeholder='example@mail.com' aria-label='Почта' aria-describedby='basic-addon1'>
+    </div>
+  </div>
+  <div class='mb-3'>
+    <label for='message' class='form-label'>Сообщение</label>
+    <textarea class='form-control' id='message' name='message' rows='4'></textarea>
+  </div>
+  <button type='submit' class='btn btn-primary'>Отправить</button>
+</form>
+</div>
+
+<!-- Правая половина - текстовая запись -->
+<div class='half bg-light d-flex align-items justify-content-center p-4'>
+<h5>Наши контакты</h5>
+<h7>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <br><br>While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.</h7>
+</div>
+
+</div> <!-- end content-row -->
+
+</div> <!-- end main-content -->
+
+<!-- Bootstrap JS (для dropdown) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
